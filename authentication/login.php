@@ -33,23 +33,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $error = "Invalid username or password.";
 }
 ?>
-
 <!DOCTYPE html>
 <html>
-<head><title>Login - ShipMyWhip</title></head>
+<head>
+  <title>Login - ShipMyWhip</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
 <body>
 
-<h2>Login</h2>
+<header><h1>ShipMyWhip</h1></header>
 
-<?php if ($error) echo "<p style='color:red;'>$error</p>"; ?>
+<div class="container">
+  <h2>Login</h2>
 
-<form method="POST">
-  Username: <input type="text" name="username"><br><br>
-  Password: <input type="password" name="password"><br><br>
-  <input type="submit" value="Login">
-</form>
+  <?php if ($error) echo "<div class='alert-error'>$error</div>"; ?>
 
-<p><a href="../index.php">Back to Home</a></p>
-<p>No account? <a href="signup.php">Sign Up</a></p>
+  <form method="POST">
+    <label>Username</label>
+    <input type="text" name="username" required>
+    <label>Password</label>
+    <input type="password" name="password" required>
+    <input type="submit" value="Login">
+  </form>
+
+  <p>No account? <a href="signup.php">Sign Up</a></p>
+</div>
+
 </body>
 </html>

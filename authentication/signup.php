@@ -6,10 +6,8 @@ require '../config/database.php';
 $error = "";
 $success = "";
 
-// fetch locations for the dropdown
 $locations = $pdo->query("SELECT location_id, name FROM LOCATION")->fetchAll();
-
-$ADMIN_KEY = "shipmywhip123"; // change this to whatever you want
+$ADMIN_KEY = "shipmywhip123";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $first_name = $_POST['first_name'];
@@ -18,7 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password   = $_POST['password'];
     $role       = $_POST['role'];
 
-    // check if username is taken in either table
     $stmt = $pdo->prepare("SELECT * FROM EMPLOYEE WHERE username = ?");
     $stmt->execute([$username]);
     $taken = $stmt->fetch();
@@ -31,7 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($taken) {
         $error = "Username already taken.";
-
     } elseif ($role == 'employee') {
         $admin_key   = $_POST['admin_key'];
         $location_id = $_POST['location_id'];
@@ -44,52 +40,60 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header("Location: ../index.php");
             exit();
         }
-
     } else {
         $stmt = $pdo->prepare("INSERT INTO CUSTOMER (first_name, last_name, username, password) VALUES (?, ?, ?, ?)");
-            $stmt->execute([$first_name, $last_name, $username, $password]);
-            header("Location: ../index.php");
-            exit();
+        $stmt->execute([$first_name, $last_name, $username, $password]);
+        header("Location: ../index.php");
+        exit();
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html>
-<head><title>Sign Up - ShipMyWhip</title></head>
+<head>
+  <title>Sign Up - ShipMyWhip</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
 <body>
 
-<h2>Sign Up</h2>
+<header><h1>ShipMyWhip</h1></header>
 
-<?php if ($error) echo "<p style='color:red;'>$error</p>"; ?>
-<?php if ($success) echo "<p style='color:green;'>$success</p>"; ?>
+<div class="container">
+  <h2>Sign Up</h2>
 
-<form method="POST">
-  First Name: <input type="text" name="first_name"><br><br>
-  Last Name:  <input type="text" name="last_name"><br><br>
-  Username:   <input type="text" name="username"><br><br>
-  Password:   <input type="password" name="password"><br><br>
+  <?php if ($error) echo "<div class='alert-error'>$error</div>"; ?>
 
-  Account Type:
-  <select name="role" id="role" onchange="toggleEmployee()">
-    <option value="customer">Customer</option>
-    <option value="employee">Employee</option>
-  </select><br><br>
+  <form method="POST">
+    <label>First Name</label>
+    <input type="text" name="first_name" required>
+    <label>Last Name</label>
+    <input type="text" name="last_name" required>
+    <label>Username</label>
+    <input type="text" name="username" required>
+    <label>Password</label>
+    <input type="password" name="password" required>
+    <label>Account Type</label>
+    <select name="role" id="role" onchange="toggleEmployee()">
+      <option value="customer">Customer</option>
+      <option value="employee">Employee</option>
+    </select>
 
-  <div id="employee_fields" style="display:none;">
-    Admin Key: <input type="password" name="admin_key"><br><br>
-    Location:
-    <select name="location_id">
-      <?php foreach ($locations as $loc): ?>
-        <option value="<?php echo $loc['location_id']; ?>"><?php echo $loc['name']; ?></option>
-      <?php endforeach; ?>
-    </select><br><br>
-  </div>
+    <div id="employee_fields" style="display:none;">
+      <label>Admin Key</label>
+      <input type="password" name="admin_key">
+      <label>Location</label>
+      <select name="location_id">
+        <?php foreach ($locations as $loc): ?>
+          <option value="<?php echo $loc['location_id']; ?>"><?php echo $loc['name']; ?></option>
+        <?php endforeach; ?>
+      </select>
+    </div>
 
-  <input type="submit" value="Sign Up">
-</form>
+    <input type="submit" value="Sign Up">
+  </form>
 
-<p>Already have an account? <a href="login.php">Login</a></p>
+  <p>Already have an account? <a href="login.php">Login</a></p>
+</div>
 
 <script>
 function toggleEmployee() {

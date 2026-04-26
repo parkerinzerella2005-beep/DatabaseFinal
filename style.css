@@ -1,0 +1,237 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  color: #333;
+}
+
+header {
+  background: #1a1a2e;
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h1 {
+  font-size: 1.4rem;
+}
+
+header a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+nav {
+  background: #16213e;
+  padding: 10px 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+nav a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 0.85rem;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+nav a:hover {
+  background: #0f3460;
+  color: white;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+  color: #1a1a2e;
+}
+
+h3 {
+  margin: 20px 0 10px;
+  font-size: 1.1rem;
+  color: #1a1a2e;
+}
+
+form {
+  background: white;
+  padding: 20px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+form label,
+form input[type="text"],
+form input[type="password"],
+form input[type="email"],
+form input[type="number"],
+form input[type="date"],
+form input[type="month"],
+form select {
+  display: block;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="email"],
+form input[type="number"],
+form input[type="date"],
+form input[type="month"],
+form select {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+form input[type="checkbox"] {
+  margin-bottom: 12px;
+}
+
+input[type="submit"],
+button {
+  background: #1a1a2e;
+  color: white;
+  border: none;
+  padding: 9px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+input[type="submit"]:hover,
+button:hover {
+  background: #0f3460;
+}
+
+input[type="submit"].danger {
+  background: #c0392b;
+}
+
+input[type="submit"].danger:hover {
+  background: #922b21;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 6px;
+  overflow: hidden;
+  font-size: 0.9rem;
+}
+
+table th {
+  background: #1a1a2e;
+  color: white;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+table td {
+  padding: 9px 12px;
+  border-bottom: 1px solid #eee;
+}
+
+table tr:last-child td {
+  border-bottom: none;
+}
+
+table tr:hover td {
+  background: #f9f9f9;
+}
+
+.alert-error {
+  background: #fde8e8;
+  color: #c0392b;
+  padding: 10px 14px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  border: 1px solid #f5c6c6;
+}
+
+.alert-success {
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 10px 14px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  border: 1px solid #c8e6c9;
+}
+
+.filter-form {
+  background: white;
+  padding: 15px 20px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.filter-form select,
+.filter-form input[type="date"],
+.filter-form input[type="month"] {
+  padding: 7px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  width: auto;
+  margin-bottom: 0;
+}
+
+.filter-form label {
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 4px;
+  display: block;
+  width: auto;
+}
+
+.filter-form a {
+  color: #666;
+  font-size: 0.85rem;
+  text-decoration: none;
+  padding: 7px 10px;
+}
+
+.filter-form a:hover {
+  color: #333;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 20px 0;
+}
+
+a.back {
+  color: #666;
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+a.back:hover {
+  color: #333;
+}
